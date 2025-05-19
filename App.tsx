@@ -1,12 +1,12 @@
-
-import { getDefaultConfig } from "@react-native/metro-config";
 import React from "react";
-import { SafeAreaView, Text } from "react-native";
+import { SafeAreaView } from "react-native";
+
+import Home from './src/screens/Home' //import Home from './src/screens/Home'
 
 function App() {
   return <SafeAreaView>
-    <Text>Hello World!</Text>
+    <Home />
   </SafeAreaView>
 }
 
-export default App;
+export default App; 
