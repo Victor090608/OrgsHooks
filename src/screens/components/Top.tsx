@@ -7,7 +7,7 @@ import logo from "../../assets/logo.png";
 class Top extends React.Component {
     state = {
         top: {
-            welcome: 'Olá!',
+            welcome: '',
             caption: '',
         },
         list: []
@@ -42,10 +42,12 @@ const styles = StyleSheet.create({
         fontSize: 26,
         lineHeight: 42,
         fontWeight: 'bold',
+        color: '#464646'
     },
     caption: {
         fontSize: 16,
         lineHeight: 26,
+        color: '#a3a3a3'
 
     }
 })
