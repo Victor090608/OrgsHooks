@@ -1,5 +1,7 @@
-import React from "react";
-import { Text } from "react-native";
+import React, { use } from "react";
+import { Image, StyleSheet, TouchableOpacity, View } from "react-native";
+import star from "../../assets/estrela.png";
+import grayStar from "../../assets/estrelaCinza.png";
 
 type StarsProps = {
     quantity: number;
@@ -12,6 +14,42 @@ export default function Stars({
     editable = false,
     large = false,
 }: StarsProps) {
-    return <Text>★★★★★</Text>
+    const [quantity, setQuantity] = React.useState(oldQuantity);
+    const styles = styleFunction(large);
+
+    const getImage = (index: any) => {
+        if (index < quantity) {
+            return star;
+        }
+        return grayStar;
+    }
+    const StarsRender = () => {
+        const starsList = [];
+        for (let i = 0; i < 5; i++) {
+            starsList.push(
+                <TouchableOpacity
+                key={i}
+                onPress={() => setQuantity(i + 1)}
+                disabled={!editable}
+                >
+                    <Image source={getImage(i)} style={styles.star} />
+                </TouchableOpacity>
+            )
+        }
+        return starsList;
+    }
+    
+    return <View style={styles.stars}>
+        <StarsRender />
+    </View>
 }
 
+const styleFunction = (large: boolean) => StyleSheet.create({
+    star: {
+        width: large ? 36 : 12,
+        height: large ? 36 : 12,
+    },
+    stars: {
+        flexDirection: 'row'
+    }
+})
